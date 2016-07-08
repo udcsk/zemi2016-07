@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Text Edit.</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="main.js"></script>
+  </head>
+
+  <body>
+
+    タイトル：<textarea name="title" rows="1" cols="40">TITLE</textarea>
+    <br>
+    本文<br>
+    <textarea id="content" value="本文" rows="10" cols="100"></textarea>
+    <br>
+    <input type="button" id="sendText" value="解析！">
+
+
+    <!-- http://jlp.yahooapis.jp/KeyphraseService/V1/extract?appid=dj0zaiZpPU1XMmlaWE5YQmJrZiZzPWNvbnN1bWVyc2VjcmV0Jng9YzI&sentence=<<解析テキスト>>&output=json&callback=responsed -->
+
+  </body>
+</html>
