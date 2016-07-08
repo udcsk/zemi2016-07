@@ -10,12 +10,14 @@
 
   <body>
 
-    タイトル：<textarea name="title" rows="1" cols="40">TITLE</textarea>
-    <br>
-    本文<br>
-    <textarea id="content" value="本文" rows="10" cols="100"></textarea>
-    <br>
-    <input type="button" id="sendText" value="解析！">
+    <form id="textInputForm">
+      タイトル：<textarea name="title" rows="1" cols="40">TITLE</textarea>
+      <br>
+      本文<br>
+      <input type="text" id="textContent" value="本文を入力">
+      <br>
+      <input type="button" id="sendText" value="解析！">
+    </form>
 
 
     <!-- http://jlp.yahooapis.jp/KeyphraseService/V1/extract?appid=dj0zaiZpPU1XMmlaWE5YQmJrZiZzPWNvbnN1bWVyc2VjcmV0Jng9YzI&sentence=<<解析テキスト>>&output=json&callback=responsed -->
