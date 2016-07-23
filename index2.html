@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Text Edit.</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="main.js"></script>
+</head>
+
+<body>
+<p><strong>下のテキストエリアに解析したい文章をを入力して下さい。</strong>
+
+<form id="form1"><textarea id="query" rows="10" cols="100">
+テキストエリアらしいです
+</textarea>
+<br />
+<input type="submit" value="解析" /> ※ html タグが含まれていると評価スコアが結構ぶれます。
+</form>
+
+<p>↓↓　ここに解析結果を表示します　↓↓<br />
+<div id="result" style="border: 1px solid #000066; padding: 10px"></div>
+
+<script type="text/javascript">
+  $(function(){
+    $("#form1").submit(function(){
+      search1($("#query").val());
+      return false;
+    });
+  });
+
+  function search1(query) {
+    $("#result").text("Loading...");
+    $.ajax({
+      dataType: "jsonp",
+      data: {
+        "appid": "dj0zaiZpPU1XMmlaWE5YQmJrZiZzPWNvbnN1bWVyc2VjcmV0Jng9YzI-",
+        "sentence": query,
+        "output" : "json",
+        "max-results":"10",
+        "alt":"json-in-script"
+      },
+      cache: true,
+      url: "http://jlp.yahooapis.jp/KeyphraseService/V1/extract",
+      success: function (data) {
+        var associd = "drk7jp-22";
+        $("#result").empty();
+        var text = $("#query").val();
+        $.each(data, function(word,score){
+          var affiliate = '<a href="http://www.amazon.co.jp/gp/search?ie=UTF8&keywords=' +encodeURI(word)+ '&tag=' + associd + '&index=blended&linkCode=ur2&camp=247&creative=1211">' +word+ '</a>';
+          var re = new RegExp(word,"mg");
+          text = text.replace(re, affiliate);
+        });
+        $("#result").append(text);
+      }
+    });
+  }
+</script>
+</body>
+
+</html>

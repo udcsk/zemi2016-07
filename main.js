@@ -11,14 +11,15 @@ $(function() {
 
     //outputOption = "&output=json&callback=resultByYahoo";
     //jsonURL = requestUrl + contentText + outputOption;
-    try {
-      domDoc = DOMParser.parseFromString( xmlURL , "application/xml" );
-    } catch (e) {
 
-    } finally {
-
-    }
-    domDoc = DOMParser.parseFromString( xmlURL , "application/xml" );
+    $.ajax({
+      url:xmlURL,
+      success:function(xml){
+        //ここでパースするらしい。
+        var $Keyphrase = $(this).find('Keyphrase').text();
+        $('<p>'+ Keyphrase +'</p>').appendTo('#result');
+      }
+    });
 
     console.log("コンソールログに出力", xmlURL);
     //document.location = requestUrl + contentText + outputOption;
